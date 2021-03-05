@@ -75,4 +75,19 @@ public class Dictionary {
 	public Set<Entry<String, List<String>>> entrySet() {
 		return dictionary.entrySet();
 	}
+	
+	public List<String> getCommonValues(String key1, String key2) {
+		List<String> commonValues = new ArrayList<>();
+		if (dictionary.containsKey(key1) && dictionary.containsKey(key2)) {
+			List<String> values1 = dictionary.get(key1);
+			List<String> values2 = dictionary.get(key2);
+			
+			for(String value: values1) {
+				if (values2.contains(value)) {
+					commonValues.add(value);
+				}
+			}
+		}
+		return commonValues;
+	}
 }

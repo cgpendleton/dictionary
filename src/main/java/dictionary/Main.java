@@ -70,6 +70,9 @@ public class Main {
 			case "ITEMS":
 				printItems();
 				break;
+			case "INTERSECT":
+				getCommonValues(inputArr[1], inputArr[2]);
+				break;
 			case "SAVE":
 				save(inputArr[1]);
 				break;
@@ -191,6 +194,19 @@ public class Main {
 		if (loaded != null) {
 			dictionary = loaded;
 			System.out.println("Loaded");
+		}
+	}
+	
+	private static void getCommonValues(String key1, String key2) {
+		List<String> commonValues = dictionary.getCommonValues(key1, key2);
+		
+		if (commonValues.isEmpty()) {
+			System.out.println("(empty)");
+		} else {
+			int i = 0;
+			for (String value: commonValues) {
+				System.out.printf("%d) %s\n", ++i, value);
+			}
 		}
 	}
 }

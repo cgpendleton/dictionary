@@ -1,5 +1,8 @@
 package dictionary;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -40,5 +43,22 @@ public class CommandTest {
 		Assert.assertFalse(dictionary.valueExists("foo", "bar"));
 		dictionary.addMember("foo", "bar");
 		Assert.assertTrue(dictionary.valueExists("foo", "bar"));
+	}
+	
+	@Test
+	public void testIntersect() {
+		dictionary.addMember("foo", "bar");
+		dictionary.addMember("foo", "baz");
+		dictionary.addMember("bang", "bang");
+		
+		Assert.assertArrayEquals(dictionary.getCommonValues("foo", "bang").toArray(), 
+				new ArrayList<>().toArray());
+		
+		dictionary.addMember("bang", "bar");
+		List<String> expected = new ArrayList<>();
+		expected.add("bar");
+		Assert.assertArrayEquals(dictionary.getCommonValues("foo", "bang").toArray(), 
+				expected.toArray());
+		
 	}
 }
