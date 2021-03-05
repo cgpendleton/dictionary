@@ -5,35 +5,22 @@ sourceCompatibility = JavaVersion.VERSION_1_10
 targetCompatibility = JavaVersion.VERSION_1_10
 
 repositories {
-    jcenter()
-    maven {
-        name = 'JBoss repository' // required to obtain non-free JAI
-        url = 'https://repository.jboss.org/nexus/content/repositories/thirdparty-releases'
-    }
-    mavenLocal()
-    //flatDir(dirs: 'dev/externals') // for libraries not in any other repository
+    mavenCentral()
 }
 
 sourceSets {
     main {
         java {
-            srcDir 'src/main'
-        }
-        resources {
-            srcDir 'src/main'
-            srcDir 'dev/icons'
+            srcDir 'src/main/java'
         }
     }
     test {
         java {
-            srcDir 'src/test'
+            srcDir 'src/test/java'
         }
     }
 }
 
-// Declare Lombok appropriately to avoid deprecation warnings in Gradle >= 4.6
 dependencies {
-    compileOnly 'org.projectlombok:lombok:1.16.20'
-    annotationProcessor 'org.projectlombok:lombok:1.16.20'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.16.20'
+    implementation 'junit:junit:4.13.2'
 }
