@@ -1,10 +1,10 @@
 # dictionary
 
-##System requirements
+### System requirements
 Java 10
 
-###Build
+### Build
 ./gradlew build
 
-###Run
+### Run
 java -jar build/libs/dictionary.jar
