@@ -11,6 +11,8 @@ public enum Command {
 	VALUEEXISTS("Returns whether a value exists within a key", "key", "value"),
 	ALLMEMBERS("Returns all the values in the dictionary"),
 	ITEMS("Returns all keys in the dictionary and all of their values"),
+	SAVE("Save the current dictionary to a file", "filepath"),
+	LOAD("Load a dictionary from a file", "filepath"),
 	COMMANDS("See this list of commands"),
 	EXIT("Exit the dictionary application");
 	

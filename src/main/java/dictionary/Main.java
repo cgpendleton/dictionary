@@ -70,6 +70,12 @@ public class Main {
 			case "ITEMS":
 				printItems();
 				break;
+			case "SAVE":
+				save(inputArr[1]);
+				break;
+			case "LOAD":
+				load(inputArr[1]);
+				break;
 			case "COMMANDS":
 				printCommands();
 				break;
@@ -171,6 +177,20 @@ public class Main {
 					System.out.printf("%d) %s: %s\n", ++i, entry.getKey(), value);
 				}
 			}
+		}
+	}
+	
+	private static void save(String filepath) {
+		if (DictionaryPersistence.saveDictionary(dictionary, filepath)) {
+			System.out.println("Saved");
+		}
+	}
+	
+	private static void load(String filepath) {
+		Dictionary loaded = DictionaryPersistence.loadDictionary(filepath);
+		if (loaded != null) {
+			dictionary = loaded;
+			System.out.println("Loaded");
 		}
 	}
 }
